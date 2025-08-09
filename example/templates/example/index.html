@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>API de Vérification des Numéros</title>
+	</head>
+	<body>
+		<h1>Bienvenue sur l'API de vérification des numéros de téléphone !</h1>
+		<p>
+			Cette API vous permet de récupérer des informations détaillées sur un
+			numéro de téléphone, telles que :
+		</p>
+		<ul>
+			<li>Le pays d'origine</li>
+			<li>L'opérateur de télécommunication</li>
+			<li>Les coordonnées géographiques (latitude et longitude)</li>
+			<li>La validité du numéro</li>
+			<li>Une carte HTML de la localisation</li>
+		</ul>
+		<p><strong>Comment utiliser l'API :</strong></p>
+		<ul>
+			<li>
+				<strong>Méthode GET :</strong> Envoyez une requête avec le paramètre
+				?phone_number= (ex. ?phone_number=+918897909596)
+			</li>
+			<li>
+				<strong>Méthode POST :</strong> Envoyez un corps JSON avec
+				{"phone_number": "valeur"} (ex. {"phone_number": "+918897909596"})
+			</li>
+		</ul>
+		<p><strong>Exemple de réponse JSON :</strong></p>
+		<pre>
+    {{
+        "phone_number": "+918897909596",
+        "country_code": 91,
+        "location": "India",
+        "service_provider": "Airtel",
+        "latitude": 28.6139,
+        "longitude": 77.2090,
+        "is_valid_number": true,
+        "number_type": "MOBILE",
+        "map_html": "..."
+    }}
+    </pre>
+		<p>L'heure actuelle est {{ current_time }} GMT.</p>
+		<p>
+			Pour plus d'informations ou pour rendre le service payant, contactez-nous
+			bientôt !
+		</p>
+	</body>
+</html>
