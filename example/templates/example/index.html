@@ -16,39 +16,54 @@
 		<ul>
 			<li>Le pays d'origine</li>
 			<li>L'opérateur de télécommunication</li>
-			<li>Les coordonnées géographiques (latitude et longitude)</li>
+			<li>Les coordonnées</li>
 			<li>La validité du numéro</li>
-			<li>Une carte HTML de la localisation</li>
+			<li>Le type de numéro de téléphone</li>
 		</ul>
+
 		<p><strong>Comment utiliser l'API :</strong></p>
 		<ul>
+			<li><strong>URL de base :</strong> <code>/phone-info</code></li>
 			<li>
-				<strong>Méthode GET :</strong> Envoyez une requête avec le paramètre
-				?phone_number= (ex. ?phone_number=+918897909596)
+				<strong>Méthode GET :</strong> Envoyez une requête vers
+				<code>/phone-info</code> avec le paramètre <code>?phone_number=</code>
+				Exemple :
+				<code>/phone-info?phone_number=+918897909596</code>
 			</li>
 			<li>
-				<strong>Méthode POST :</strong> Envoyez un corps JSON avec
-				{"phone_number": "valeur"} (ex. {"phone_number": "+918897909596"})
+				<strong>Méthode POST :</strong> Envoyez un corps JSON vers
+				<code>/phone-info</code>
+				Exemple :
+				<pre>
+{
+    "phone_number": "+918897909596"
+}</pre
+				>
 			</li>
 		</ul>
+
 		<p><strong>Exemple de réponse JSON :</strong></p>
 		<pre>
-    {{
-        "phone_number": "+918897909596",
-        "country_code": 91,
-        "location": "India",
-        "service_provider": "Airtel",
-        "latitude": 28.6139,
-        "longitude": 77.2090,
-        "is_valid_number": true,
-        "number_type": "MOBILE",
-        "map_html": "..."
-    }}
-    </pre>
+{
+    "phone_number": "+918897909596",
+    "country_code": 91,
+    "national_number": "8897909596",
+    "location": "India",
+    "service_provider": "Airtel",
+    "is_valid_number": true,
+    "number_type": "MOBILE"
+}</pre
+		>
+
 		<p>L'heure actuelle est {{ current_time }} GMT.</p>
 		<p>
-			Pour plus d'informations ou pour rendre le service payant, contactez-nous
-			bientôt !
+			Pour plus d'informations ou pour rendre le service payant,
+			<a
+				href="mailto:fabricetoyi87@gmail.com"
+				target="_blank">
+				contactez-nous
+			</a>
+			!
 		</p>
 	</body>
 </html>
