@@ -66,7 +66,14 @@ WSGI_APPLICATION = 'api.wsgi.app'
 # Note: Django modules for using databases are not support in serverless
 # environments like Vercel. You can use a database over HTTP, hosted elsewhere.
 
-DATABASES = {}
+
+
+DATABASES = {
+    'sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+}
 
 
 # Password validation
@@ -87,6 +94,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],  # aucune auth par défaut
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
