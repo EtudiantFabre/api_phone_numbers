@@ -26,9 +26,22 @@ class PhoneInfoView(APIView):
 
     def process_phone_number(self, phone_number):
         try:
-            phone_number = phone_number.strip().replace(" ", "")
+            print(f"Processing phone number: {phone_number}")  # Débogage
+            # Nettoyer le numéro
+            phone_number = phone_number.strip().replace(" ", "").replace("-", "")
+            print(f"Cleaned phone number: {phone_number}")  # Débogage
+
+            # Parser le numéro
+            parsed_number = None
             if not phone_number.startswith("+"):
-                parsed_number = phonenumbers.parse(f"+{phone_number}")
+                parsed_number = phonenumbers.parse(f"+{phone_number}", None)
+            else:
+                parsed_number = phonenumbers.parse(phone_number, None)
+            print(f"Parsed number: {parsed_number}")  # Débogage
+
+            # Vérifier si le parsing a réussi
+            if parsed_number is None:
+                raise ValueError("Failed to parse phone number")
 
             location = geocoder.description_for_number(parsed_number, "fr")
             service_provider = carrier.name_for_number(parsed_number, "fr")
